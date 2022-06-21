@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         if(isAtLeftEdge|!isAtRightEdge){
             undraw()
             currentRotation++
-            if(currentRotation === current.length){ // if the current rotation get to 4 make it go back to 0
+            if(currentRotation == current.length){ // if the current rotation get to 4 make it go back to 0
                 currentRotation = 0
             }
         }
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         })
     }
 
-    //add functionality to the button
+    //add functionality to the start and pasue button
     StartBotton.addEventListener('click', ()=> {
         if(timerId){
             clearInterval(timerId)
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             displayShape()
         }
     })
-    // add score
+    // add score function can add up score when a whole row been taken
     function addScore(){
         for(let i = 0; i < 199; i = width + i){
             const row=[i,i+1,i+2,i+3,i+4,i+5,i+6,i+7,i+8,i+9]
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         }
     }
 
-    //game over
+    //game over function check if the taken class reach the top of the grid
     function gameover(){
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
             ScoreDisplay.innerHTML = 'end'
